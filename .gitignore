@@ -1,0 +1,42 @@
+# --- OS & System Junk (macOS/Linux) ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+Desktop.ini
+
+# --- Editor & IDE Temporary Files ---
+# VSCode, JetBrains, Vim etc.
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.classpath
+.project
+.settings/
+
+# --- Shell History & Logs (Safety) ---
+# 誤って履歴ファイルをaddしないように防ぐ
+.bash_history
+.zsh_history
+.history
+*.log
+
+# --- SSH & Secrets Safety Net ---
+# 1Passwordを使うとしても、手癖でファイルをコピーしてしまった時のための保険
+id_rsa
+id_ed25519
+*.pem
+*.key
+*.p12
+known_hosts
+
+# --- Chezmoi Specific ---
+# chezmoiの設定ファイルそのもの（ローカル生成されたもの）が
+# 万が一ソースディレクトリに迷い込んだ場合用
+chezmoi.toml
+chezmoi.yaml
+chezmoi.json
+
