@@ -1,0 +1,48 @@
+# Color Scheme
+# TokyoNight
+# Gruvbox Dark
+theme = Vesper
+
+# Font
+font-size = 20
+font-family = UDEV Gothic NF # https://github.com/yuru7/udev-gothic
+
+# Window
+window-padding-balance = true
+window-theme = ghostty
+window-width = 150
+window-height = 60
+window-inherit-working-directory = true
+window-new-tab-position = current
+
+# Background
+background-opacity = 0.9
+background-blur-radius = 0
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Cursor
+cursor-color = white
+cursor-opacity = 0.5
+cursor-style-blink = false
+
+# keybind
+keybind = shift+enter=text:\n
+keybind = "cmd+shift+r=toggle_quick_terminal"
+
+# OS
+macos-titlebar-style = transparent
+macos-titlebar-style = hidden
+copy-on-select = true
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
+# Quick terminal
+quick-terminal-position = center
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.3
+quick-terminal-size = 30%,30%
+
+# Shell
+shell-integration = detect
