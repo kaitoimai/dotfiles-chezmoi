@@ -41,3 +41,4 @@ chezmoi.yaml
 chezmoi.json
 
 node_modules/
+doc/
