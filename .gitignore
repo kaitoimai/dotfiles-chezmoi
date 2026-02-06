@@ -40,3 +40,4 @@ chezmoi.toml
 chezmoi.yaml
 chezmoi.json
 
+node_modules/
