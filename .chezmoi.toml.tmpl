@@ -1,0 +1,8 @@
+# デフォルト値を設定
+{{ $is_work := false }}
+
+# 対話モードで質問する
+{{ $is_work = promptBool "Is this a work machine" false }}
+
+[data]
+    is_work = {{ $is_work }}
