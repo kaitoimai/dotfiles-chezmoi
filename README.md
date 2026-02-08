@@ -101,3 +101,30 @@ chezmoi diff
 chezmoi apply
 ```
 
+**Apply specific files only**
+
+```bash
+# Apply specific file
+chezmoi apply ~/.config/fish/config.fish
+
+# Apply specific directory
+chezmoi apply ~/.config/nvim
+
+# Apply multiple files
+chezmoi apply ~/.config/fish/config.fish ~/.gitconfig
+```
+
+**Preview changes before applying (dry-run)**
+
+```bash
+# Preview changes for specific file
+chezmoi diff ~/.config/fish/config.fish
+
+# Dry-run (show what would be applied without actually applying)
+chezmoi apply --dry-run ~/.config/fish/config.fish
+
+# Verbose mode to see detailed changes
+chezmoi apply --verbose --dry-run
+```
+
+**Note:** Files with `.tmpl` extension (like `config.fish.tmpl`) use chezmoi's template features for 1Password integration and conditional logic.
