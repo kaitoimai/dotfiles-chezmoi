@@ -80,3 +80,24 @@ brew install prek
 cd ~/.local/share/chezmoi
 prek install
 ```
+
+## Updating Configuration Files
+
+When you need to update configuration files managed by chezmoi (e.g., `config.fish`, `nvim/init.lua`):
+
+**Edit source files in chezmoi directory**
+
+```bash
+# Navigate to chezmoi source directory
+cd ~/.local/share/chezmoi
+
+# Edit the source file
+# Example: vim dot_config/private_fish/config.fish.tmpl
+
+# Preview changes before applying
+chezmoi diff
+
+# Apply changes to home directory
+chezmoi apply
+```
+
