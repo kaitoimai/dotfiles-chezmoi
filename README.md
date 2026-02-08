@@ -17,6 +17,7 @@ My personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ├── package-lock.json
 │
 ├── dot_Brewfile                # Homebrew dependencies → ~/.Brewfile
+├── dot_tmux.conf               # Tmux config file → ~/.tmux.conf
 │
 ├── dot_config/
 │   ├── chezmoi/
@@ -81,6 +82,16 @@ cd ~/.local/share/chezmoi
 prek install
 ```
 
+**Setup tmux plugin manager (tpm)**
+
+```bash
+# Clone tpm repository
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Start tmux and install plugins
+# Press Prefix + I to install all plugins
+```
+
 ## Updating Configuration Files
 
 When you need to update configuration files managed by chezmoi (e.g., `config.fish`, `nvim/init.lua`):
@@ -126,5 +137,3 @@ chezmoi apply --dry-run ~/.config/fish/config.fish
 # Verbose mode to see detailed changes
 chezmoi apply --verbose --dry-run
 ```
-
-**Note:** Files with `.tmpl` extension (like `config.fish.tmpl`) use chezmoi's template features for 1Password integration and conditional logic.
