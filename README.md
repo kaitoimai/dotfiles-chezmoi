@@ -18,6 +18,7 @@ My personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 │
 ├── dot_Brewfile                # Homebrew dependencies → ~/.Brewfile
 ├── dot_tmux.conf               # Tmux config file → ~/.tmux.conf
+├── dot_codex                   # Codex CLI config file → ~/.codex/config.toml
 │
 ├── dot_config/
 │   ├── chezmoi/

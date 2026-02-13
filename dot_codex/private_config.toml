@@ -1,0 +1,11 @@
+model = "gpt-5.3-codex"
+review_model = "gpt-5.3-codex"
+network_access = true
+sandbox_mode = "workspace-write"
+hide_agent_reasoning = true
+
+[features]
+rmcp_client = true
+web_search = true
+skills = true
+unified_exec = true
