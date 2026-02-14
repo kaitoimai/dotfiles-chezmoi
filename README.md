@@ -93,6 +93,22 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Press Prefix + I to install all plugins
 ```
 
+## Manual Setup Checklist
+
+Some configurations cannot be managed by chezmoi and need to be applied manually:
+
+- [ ] **Raycast**: Import configuration file
+  - Go to Raycast Settings → Advanced → Import Settings
+  - Select your configuration file
+
+- [ ] **Logi Options+**: Restore device settings
+  - Login with the same Logi account
+  - Select target device → Settings → Backup
+  - Select the backup from previous Mac and restore
+
+- [ ] **Other manual configurations**:
+  - Add your manual setup items here
+
 ## Updating Configuration Files
 
 When you need to update configuration files managed by chezmoi (e.g., `config.fish`, `nvim/init.lua`):
