@@ -21,6 +21,8 @@ My personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ├── dot_codex                   # Codex CLI config → ~/.codex/config.toml
 │
 ├── dot_config/
+│   ├── opencode/
+│   │   └── opeoncode.json      # OpenCode config
 │   ├── chezmoi/
 │   │   └── scripts/            # chezmoi scripts
 │   ├── ghostty/                # Ghostty (terminal) config
