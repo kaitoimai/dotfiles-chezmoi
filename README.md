@@ -2,7 +2,7 @@
 
 My personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
-> **Note:** Previously managed dotfiles at [kaitoimai/dotfiles](https://github.com/kaitoimai/dotfiles)
+> **Note:** This dotfiles repository is for **macOS only**. Previously managed dotfiles at [kaitoimai/dotfiles](https://github.com/kaitoimai/dotfiles)
 
 ## Directory Structure
 
@@ -23,8 +23,6 @@ My personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ├── dot_config/
 │   ├── opencode/
 │   │   └── opeoncode.json      # OpenCode config
-│   ├── chezmoi/
-│   │   └── scripts/            # chezmoi scripts
 │   ├── ghostty/                # Ghostty (terminal) config
 │   │   └── config
 │   ├── nvim/                   # Neovim configuration
@@ -66,6 +64,18 @@ chezmoi diff
 # Apply changes
 chezmoi apply
 ```
+
+**Install Homebrew packages**
+
+```bash
+# Install packages from Brewfile
+brew bundle --global
+
+# Or install specific packages manually
+brew install <package-name>
+```
+
+> **Note:** Package installation is manual. Update `~/.Brewfile` as needed and run `brew bundle --global` to sync.
 
 **Install Node.js dependencies (for secretlint)**
 
