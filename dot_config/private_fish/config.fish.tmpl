@@ -39,7 +39,7 @@ fish_add_path $GOPATH/bin
 fish_add_path $HOME/.cargo/bin
 # haskell
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
-fish_add_path $HOME/.cabal/bin /Users/imaikaito/.ghcup/bin # ghcup-env
+fish_add_path $HOME/.cabal/bin $HOME/.ghcup/bin # ghcup-env
 
 # llm
 # ※printf で "op://Personal/OPENAI_API_KEY_PERSONAL/credential" のような文字列を作る
@@ -120,14 +120,23 @@ set -gx CLICOLOR 1
 
 zoxide init fish | source
 
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
+# Added by OrbStack: command-line tools and integration (macOS only)
+{{- if .is_darwin }}
 source ~/.orbstack/shell/init.fish 2>/dev/null || :
+{{- end }}
 
-alias cc="/Users/imaikaito/.claude/local/claude"
+alias cc="$HOME/.claude/local/claude"
 
 # opencode
-fish_add_path /Users/imaikaito/.opencode/bin
+fish_add_path $HOME/.opencode/bin
 alias oc="opencode"
 
+# Homebrew
+{{- if .is_darwin }}
 eval (/opt/homebrew/bin/brew shellenv)
+{{- else if .is_linux }}
+# Linuxbrew path (if installed)
+if test -d /home/linuxbrew/.linuxbrew
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+end
+{{- end }}
