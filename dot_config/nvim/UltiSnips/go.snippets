@@ -1,0 +1,32 @@
+# ref:
+# https://github.com/fatih/vim-go/blob/master/gosnippets/UltiSnips/go.snippets
+# https://github.com/honza/vim-snippets/blob/master/snippets/go.snippets
+
+snippet testcase "test func template" wA
+package
+
+import "testing"
+
+func TestFunc(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    interface{} // Change to appropriate type
+		expected interface{} // Change to appropriate type
+	}{
+		{
+			name:     "Test case 1",
+			input:    nil, // Add test input
+			expected: nil, // Add expected output
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// result := solution(tt.input)
+			// if result != tt.expected {
+			// 	t.Errorf("got %v, want %v", result, tt.expected)
+			// }
+		})
+	}
+}
+endsnippet
