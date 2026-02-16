@@ -29,12 +29,8 @@ My personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 │   │   ├── init.lua            # Entry point
 │   │   ├── lazy-lock.json      # Plugin lockfile
 │   │   └── lua/                # Lua config files
-│   ├── private_fish/           # Fish shell config (private)
-│   │   └── config.fish.tmpl
-│   ├── yazi/                   # Yazi (file manager) config
-│   │   └── yazi.toml
-│   └── zellij/                 # Zellij (terminal multiplexer) config
-│       └── config.kdl
+│   └── private_fish/           # Fish shell config (private)
+│       └── config.fish.tmpl
 │
 └── dot_hammerspoon/            # Hammerspoon config → ~/.hammerspoon/
     └── init.lua
