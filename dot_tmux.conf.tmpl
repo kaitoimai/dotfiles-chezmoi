@@ -26,9 +26,13 @@ set-option -g mouse on
 
 # Use Vi key bindings in copy mode
 set-window-option -g mode-keys vi
-# Start selection with 'v' and copy using 'y' (Mac: pbcopy / Linux: xclip or xsel)
+# Start selection with 'v' and copy using 'y'
 bind -T copy-mode-vi v send-keys -X begin-selection
+{{- if .is_darwin }}
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+{{- else if .is_linux }}
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard"
+{{- end }}
 
 # Popup Scratchpad
 bind p display-popup -E -w 80% -h 80% "tmux new-session -A -s popup"
