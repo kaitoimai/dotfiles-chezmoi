@@ -120,10 +120,9 @@ set -gx CLICOLOR 1
 
 zoxide init fish | source
 
-# Added by OrbStack: command-line tools and integration (macOS only)
-{{- if .is_darwin }}
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
 source ~/.orbstack/shell/init.fish 2>/dev/null || :
-{{- end }}
 
 alias cc="$HOME/.claude/local/claude"
 
@@ -131,12 +130,4 @@ alias cc="$HOME/.claude/local/claude"
 fish_add_path $HOME/.opencode/bin
 alias oc="opencode"
 
-# Homebrew
-{{- if .is_darwin }}
 eval (/opt/homebrew/bin/brew shellenv)
-{{- else if .is_linux }}
-# Linuxbrew path (if installed)
-if test -d /home/linuxbrew/.linuxbrew
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-end
-{{- end }}
