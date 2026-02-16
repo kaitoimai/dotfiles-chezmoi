@@ -1,0 +1,133 @@
+# --- chezmoi template logic start ---
+{{- /* 変数の準備：デフォルトは _PERSONAL */ -}}
+{{- $suffix := "_PERSONAL" -}}
+
+{{- /* .chezmoi.toml で is_work が true なら _WORK に切り替え */ -}}
+{{- if .is_work -}}
+{{-   $suffix = "_WORK" -}}
+{{- end -}}
+# --- chezmoi template logic end ---
+
+# path for cmd
+fish_add_path $HOME/workspace/cmd
+
+# fzf
+set -x FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border"
+
+# Configuration to automatically use ‘fzf-tmux’ (popup) when executed within tmux
+if set -q TMUX
+    set -x FZF_TMUX 1
+    set -x FZF_TMUX_OPTS "-p 80%"
+end
+
+#--------------------------------------------------
+# Development
+#--------------------------------------------------
+alias v nvim
+alias zj zellij
+alias ff fastfetch
+alias y yazi
+
+# Python
+alias py python3
+
+# Go
+# brew upgrade go
+set -gx GOPATH $HOME/go
+fish_add_path $GOPATH/bin
+# Rust
+fish_add_path $HOME/.cargo/bin
+# haskell
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+fish_add_path $HOME/.cabal/bin /Users/imaikaito/.ghcup/bin # ghcup-env
+
+# llm
+# ※printf で "op://Personal/OPENAI_API_KEY_PERSONAL/credential" のような文字列を作る
+set -x OPENAI_API_KEY "{{ onepasswordRead (printf "op://Personal/OPENAI_API_KEY%s/credential" $suffix) }}"
+set -x ANTHROPIC_API_KEY "{{ onepasswordRead (printf "op://Personal/ANTHROPIC_API_KEY%s/credential" $suffix) }}"
+set -x GITHUB_TOKEN "{{ onepasswordRead (printf "op://Personal/GITHUB_TOKEN%s/credential" $suffix) }}"
+set -x DEEPSEEK_API_KEY "{{ onepasswordRead (printf "op://Personal/DEEPSEEK_API_KEY%s/credential" $suffix) }}"
+set -x DEEPL_API_KEY "{{ onepasswordRead (printf "op://Personal/DEEPL_API_KEY%s/credential" $suffix) }}"
+
+# npm
+set -x NPM_TOKEN "{{ onepasswordRead (printf "op://Personal/NPM_TOKEN%s/credential" $suffix) }}"
+alias n node
+alias pn pnpm
+
+# nodebrew
+fish_add_path $HOME/.nodebrew/current/bin
+
+# linux command
+alias ls lsd
+abbr -a l ls -l
+abbr -a la ls -a
+abbr -a lla ls -la
+abbr -a lt ls --tree
+alias m make
+alias co code
+alias cu cursor
+abbr -a cl clear
+alias cat bat
+abbr -a cat bat
+
+# Docker
+alias d docker
+abbr -a dps docker ps
+abbr -a dc docker-compose
+abbr -a dstop docker stop $(docker ps -q)
+
+# tmux
+alias tm tmux
+
+# Terraform
+abbr -a te terraform
+
+# K8s
+abbr -a kc kubectl
+abbr -a kx kubectx
+
+# Istio
+fish_add_path $HOME/.istioctl/bin
+
+# rtty
+# see: https://github.com/skanehira/rtty?tab=readme-ov-file
+abbr -a rt "rtty run fish -p 1234 -v --font 'UDEV Gothic NF' --font-size 20"
+
+#--------------------------------------------------
+# Git
+#--------------------------------------------------
+alias g git
+abbr -a gst g status
+abbr -a gco g checkout
+abbr -a gdf g diff
+abbr -a grs g remote show origin
+abbr -a grp g remote prune origin
+abbr -a gbr g branch
+abbr -a gf g fetch origin
+abbr -a gnb g checkout -b
+abbr -a gcm g commit -m
+abbr -a gdel g branch --list "feature/*" | xargs git branch -D
+abbr -a lg lazygit
+
+#--------------------------------------------------
+# Private
+#--------------------------------------------------
+function fish_right_prompt
+end
+
+fish_add_path $HOME/.local/bin
+set -gx CLICOLOR 1
+
+zoxide init fish | source
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.fish 2>/dev/null || :
+
+alias cc="/Users/imaikaito/.claude/local/claude"
+
+# opencode
+fish_add_path /Users/imaikaito/.opencode/bin
+alias oc="opencode"
+
+eval (/opt/homebrew/bin/brew shellenv)
