@@ -1,8 +1,24 @@
+# OS判定（自動）
+{{ $is_darwin := eq .chezmoi.os "darwin" -}}
+{{ $is_linux := eq .chezmoi.os "linux" -}}
+
 # デフォルト値を設定
-{{ $is_work := false }}
+{{ $is_work := false -}}
+{{ $is_server := false -}}
 
 # 対話モードで質問する
-{{ $is_work = promptBool "Is this a work machine" false }}
+{{ $is_work = promptBool "Is this a work machine" false -}}
+
+# Linux環境の場合、サーバーかどうか確認
+{{ if $is_linux -}}
+{{ $is_server = promptBool "Is this a server environment (no GUI)" false -}}
+{{ end -}}
 
 [data]
+    # OS判定
+    is_darwin = {{ $is_darwin }}
+    is_linux = {{ $is_linux }}
+
+    # 環境判定
     is_work = {{ $is_work }}
+    is_server = {{ $is_server }}
