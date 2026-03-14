@@ -6,6 +6,5 @@ hide_agent_reasoning = true
 
 [features]
 rmcp_client = true
-web_search = true
 skills = true
 unified_exec = true
